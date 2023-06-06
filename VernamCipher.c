@@ -10,7 +10,7 @@
 
 #include <stdio.h>
 
-int main(int argc, char* argv[])
+int main(int argc, const char* argv[])
 {
 	if (argc != 4)
 	{
@@ -43,6 +43,8 @@ int main(int argc, char* argv[])
 	if (inputSize != keySize)
 	{
 		printf("ERROR: Input file and key file have different sizes.\n");
+		fclose(inputFile);
+		fclose(keyFile);
 		return 1;
 	}
 
@@ -56,12 +58,12 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
-	int inputByte, keyByte, outputByte;
+	int inputByte;
 
 	while ((inputByte = fgetc(inputFile)) != EOF)
 	{
-		keyByte		= fgetc(keyFile);
-		outputByte	= inputByte ^ keyByte;
+		int keyByte		= fgetc(keyFile);
+		int outputByte	= inputByte ^ keyByte;
 		fputc(outputByte, outputFile);
 	}
 
