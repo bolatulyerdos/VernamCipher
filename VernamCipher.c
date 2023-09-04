@@ -2,7 +2,7 @@
 	=============================================================
 	Name		: VernamCipher.c
 	Created		: 07.06.2023
-	Modified	: 11.08.2023
+	Modified	: 04.09.2023
 	Author		: bolatulyerdos
 	Description	: Vernam cipher (one-time pad), command line tool
 	=============================================================
@@ -32,6 +32,8 @@ int main(int argc, const char* argv[])
 	if (!inputFile || !keyFile)
 	{
 		printf("ERROR: Can't open input file or key file.\n");
+		if (inputFile)	fclose(inputFile);
+		if (keyFile)	fclose(keyFile);
 		return 1;
 	}
 
