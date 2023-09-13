@@ -2,7 +2,7 @@
 	=============================================================
 	Name		: VernamCipher.c
 	Created		: 07.06.2023
-	Modified	: 04.09.2023
+	Modified	: 14.09.2023
 	Author		: bolatulyerdos
 	Description	: Vernam cipher (one-time pad), command line tool
 	=============================================================
@@ -41,8 +41,8 @@ int main(int argc, const char* argv[])
 	fseek(inputFile,	0, SEEK_END);
 	fseek(keyFile,		0, SEEK_END);
 
-	unsigned long long inputSize	= ftell(inputFile);
-	unsigned long long keySize		= ftell(keyFile);
+	size_t inputSize	= ftell(inputFile);
+	size_t keySize		= ftell(keyFile);
 
 	// Reset the files pointers to the beginning
 	rewind(inputFile);
